@@ -1,28 +1,19 @@
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-
-
-public class PlayerController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
-
 
     public float verticalInput;
     public float horizontalInput;
     public float speed;
-    public float gravity;
     public float rot;
+    public bool[] orientation;
 
     public Orientation playerOrientation;
     private RotationManager rotationManager = new RotationManager();
-
-
-    public bool[] orientation;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +24,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
         playerOrientation = GetOrientation(horizontalInput, verticalInput);
@@ -42,11 +32,9 @@ public class PlayerController : MonoBehaviour
             rot = rotationManager.GetRotation(playerOrientation);
         }
 
-        transform.eulerAngles = new Vector3(0, rot,0);
+        transform.eulerAngles = new Vector3(0, rot, 0);
 
         transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime, 0, verticalInput * speed * Time.deltaTime), Space.World);
-        
-
 
     }
 
