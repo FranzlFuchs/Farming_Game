@@ -25,21 +25,27 @@ public class Follower : MonoBehaviour, ISelectable
     {
         if (attached)
         {
-            transform.position = vehicle.transform.position ;
-            transform.rotation = vehicle.transform.rotation;
+            //transform.position = vehicle.transform.position;            
+            //transform.rotation = vehicle.transform.rotation;
         }
 
     }
 
     public void Attach(GameObject vehicle)
-    {        
+    {
         this.vehicle = vehicle;
+        transform.SetParent(vehicle.transform);
+        transform.localPosition = vehicle.GetComponent<Vehicle>().GetHitchPoint();
+        transform.rotation = vehicle.transform.rotation;
+        GetComponent<Rigidbody>().isKinematic = true;
         attached = true;
     }
     public void Dettach()
     {
+        transform.parent = null;
         attached = false;
         vehicle = null;
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     public void Select()

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerVehicleController : MonoBehaviour
 {
-
-
     SelectableList followerList = new SelectableList();
 
+   
     private Follower followerAttached;
 
     bool hasFollower;
@@ -16,6 +15,7 @@ public class PlayerVehicleController : MonoBehaviour
     void Start()
     {
         hasFollower = false;
+       
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class PlayerVehicleController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && hasFollower == true)
         {
             hasFollower = false;
-            followerAttached.Dettach();            
+            followerAttached.Dettach();
             followerList.SelectableInRange(followerAttached);
             Debug.Log("Detach");
 
@@ -38,8 +38,8 @@ public class PlayerVehicleController : MonoBehaviour
             if (followerList.Count() > 0)
             {
                 hasFollower = true;
-                followerList.Clear();
                 followerAttached = (Follower)followerList.GetSelected();
+                followerList.Clear();
                 followerAttached.Attach(this.gameObject);
                 Debug.Log("Attach");
                 return;

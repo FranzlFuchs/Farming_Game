@@ -86,7 +86,7 @@ public class SelectableList
         {
             selectable.GetOutOfRange();
         }        
-        //selected = null;
+        selected = null;
         selectableList.Clear();
     }
 }
