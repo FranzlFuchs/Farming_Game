@@ -7,6 +7,10 @@ public class Follower : MonoBehaviour, ISelectable
     public Material defaultMat;
     public Material selectedMat;
     public Material inRangeMat;
+    public GroundDetection groundDetector;
+
+    float distanceDown;
+
 
     bool attached;
     GameObject vehicle;
@@ -18,6 +22,9 @@ public class Follower : MonoBehaviour, ISelectable
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        groundDetector = GetComponentInChildren<GroundDetection>();
+        distanceDown = 2.5f;
+
     }
 
     // Update is called once per frame
@@ -42,6 +49,9 @@ public class Follower : MonoBehaviour, ISelectable
     }
     public void Dettach()
     {
+        groundDetector.Deactivate();
+        //transform.position = new Vector3(transform.position.x, transform.position.y + distanceDown, transform.position.z);
+
         transform.parent = null;
         attached = false;
         vehicle = null;
@@ -66,5 +76,22 @@ public class Follower : MonoBehaviour, ISelectable
     public void GetOutOfRange()
     {
         meshRenderer.material = defaultMat;
+    }
+
+    public void DeactivateGroundWorking()
+    {
+        groundDetector.Deactivate();
+        transform.position = new Vector3(transform.position.x, transform.position.y + distanceDown, transform.position.z);
+
+    }
+    public void ActivateGroundWorking()
+    {
+        groundDetector.Activate();
+        transform.position = new Vector3(transform.position.x, transform.position.y - distanceDown, transform.position.z);
+
+    }
+
+    public void WorkTile(Tile tile){
+        tile.ChangeMaterial();
     }
 }

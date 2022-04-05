@@ -4,77 +4,54 @@ using UnityEngine;
 
 public class PlayerVehicleController : MonoBehaviour
 {
-    SelectableList followerList = new SelectableList();
+    public Vehicle vehicle;
 
-   
-    private Follower followerAttached;
-
-    bool hasFollower;
 
     // Start is called before the first frame update
     void Start()
     {
-        hasFollower = false;
-       
+        vehicle = gameObject.GetComponent<Vehicle>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && hasFollower == true)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            hasFollower = false;
-            followerAttached.Dettach();
-            followerList.SelectableInRange(followerAttached);
-            Debug.Log("Detach");
-
+            vehicle.SwitchFollower();
             return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && hasFollower == false)
-        {
-
-            if (followerList.Count() > 0)
-            {
-                hasFollower = true;
-                followerAttached = (Follower)followerList.GetSelected();
-                followerList.Clear();
-                followerAttached.Attach(this.gameObject);
-                Debug.Log("Attach");
-                return;
-            }
         }
 
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            followerList.Previous();
+            vehicle.SelectPreviousFollower();
             return;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            followerList.Next();
+
+            vehicle.SelectNextFollower();
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+
+            vehicle.ActivateFollowerGroundWorking();
+            return;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+
+            vehicle.DeactivateFollowerGroundWorking();
             return;
         }
 
     }
 
 
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Follower") && hasFollower == false)
-        {
-            followerList.SelectableInRange(collider.GetComponent<Follower>());
-        }
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.CompareTag("Follower") && hasFollower == false)
-        {
-            followerList.SelectableOutOfRange(collider.GetComponent<Follower>());
-        }
-    }
 }
