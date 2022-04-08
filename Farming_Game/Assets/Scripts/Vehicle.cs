@@ -12,6 +12,9 @@ public class Vehicle : MonoBehaviour
     private VehicleController vehicleController;
 
     public float exitDistanceRight;
+    public float speedModifier;
+    public float defaultspeedModifier;
+    public float speedModifierGroundWorking;
 
     bool hasFollower;
     bool hasPlayer;
@@ -22,6 +25,10 @@ public class Vehicle : MonoBehaviour
         exitDistanceRight = 20;
 
         vehicleController = GetComponent<VehicleController>();
+        defaultspeedModifier = 1.5f;
+        speedModifier = defaultspeedModifier;
+
+        speedModifierGroundWorking = 0.5f;
 
         hasFollower = false;
     }
@@ -51,9 +58,11 @@ public class Vehicle : MonoBehaviour
                 hasFollower = true;
                 followerAttached = (Follower)followerList.GetSelected();
                 followerList.Clear();
-                followerAttached.Attach(this.gameObject);
+                followerAttached.Attach(this.gameObject);                
                 return;
             }
+
+
         }
 
         if (hasFollower == true)
@@ -73,6 +82,7 @@ public class Vehicle : MonoBehaviour
         if (hasFollower)
         {
             followerAttached.ActivateGroundWorking();
+            speedModifier = speedModifierGroundWorking;
         }
 
     }
@@ -81,6 +91,7 @@ public class Vehicle : MonoBehaviour
         if (hasFollower)
         {
             followerAttached.DeactivateGroundWorking();
+            speedModifier = defaultspeedModifier;
         }
 
     }
@@ -118,7 +129,7 @@ public class Vehicle : MonoBehaviour
 
         return transform.right * exitDistanceRight;
 
-        
+
     }
 
     void OnTriggerEnter(Collider collider)

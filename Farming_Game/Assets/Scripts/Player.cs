@@ -8,12 +8,17 @@ public class Player : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
     public float speed;
+    public float forwardSpeed;
+    public float reverseSpeed;
     public float rot;
     public bool[] orientation;
+
+    private bool inReverse;
 
     bool inVehicle;
 
     public Orientation playerOrientation;
+    public Orientation lastPlayerOrientation;
     private RotationManager rotationManager = new RotationManager();
 
     private Vehicle enteredVehicle;
@@ -21,8 +26,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        speed = 50.0f;
+        forwardSpeed = 50.0f;
+        reverseSpeed = 15.0f;
+        speed = forwardSpeed;
         inVehicle = false;
+        inReverse = false;
     }
 
     // Update is called once per frame
@@ -30,7 +38,45 @@ public class Player : MonoBehaviour
     {
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        playerOrientation = GetOrientation(horizontalInput, verticalInput);
+
+        if (inReverse)
+        {
+            playerOrientation = GetReverseOrientation(horizontalInput, verticalInput);
+        }
+        else
+        {
+            playerOrientation = GetOrientation(horizontalInput, verticalInput);
+        }
+
+        if (playerOrientation != Orientation.I)
+        {
+            lastPlayerOrientation = playerOrientation;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && inVehicle)
+        {
+            ExitVehicle();
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse2))
+        {
+            if (inReverse == false)
+            {
+                inReverse = true;
+                speed = reverseSpeed;
+
+            }
+            else
+            {
+                inReverse = false;
+                speed = forwardSpeed;
+
+            }
+            //playerOrientation = GetOppositeOrientation(lastPlayerOrientation);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && inVehicle)
         {
@@ -45,12 +91,25 @@ public class Player : MonoBehaviour
 
         transform.eulerAngles = new Vector3(0, rot, 0);
 
-        transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime, 0, verticalInput * speed * Time.deltaTime), Space.World);
+        if (inVehicle)
+        {
+            transform.Translate(new Vector3(horizontalInput * speed * enteredVehicle.speedModifier * Time.deltaTime, 0, verticalInput * speed * enteredVehicle.speedModifier * Time.deltaTime), Space.World);
+        }
+        else
+        {
+            transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime, 0, verticalInput * speed * Time.deltaTime), Space.World);
+        }
+
+
+
+
     }
 
 
     void EnterVehicle(Vehicle vehicle)
     {
+
+
         enteredVehicle = vehicle;
         vehicle.gameObject.transform.SetParent(transform);
         vehicle.Enter();
@@ -59,6 +118,8 @@ public class Player : MonoBehaviour
 
     void ExitVehicle()
     {
+
+
         enteredVehicle.gameObject.transform.SetParent(null);
         enteredVehicle.Exit();
         inVehicle = false;
@@ -127,11 +188,111 @@ public class Player : MonoBehaviour
 
     }
 
+
+    private Orientation GetReverseOrientation(float horAxis, float vertAxis)
+    {
+
+        //N
+        if (vertAxis > 0 && horAxis == 0)
+        {
+            return Orientation.S;
+        }
+        //NE
+        else if (vertAxis > 0 && horAxis > 0)
+        {
+            return Orientation.SW;
+        }
+        //NW
+        else if (vertAxis > 0 && horAxis < 0)
+        {
+            return Orientation.SE;
+        }
+        //E
+        else if (vertAxis == 0 && horAxis > 0)
+        {
+            return Orientation.W;
+        }
+        //W
+        else if (vertAxis == 0 && horAxis < 0)
+        {
+            return Orientation.E;
+        }
+        //S
+        if (vertAxis < 0 && horAxis == 0)
+        {
+            return Orientation.N;
+        }
+        //SE
+        else if (vertAxis < 0 && horAxis > 0)
+        {
+            return Orientation.NW;
+        }
+        //SW
+        else if (vertAxis < 0 && horAxis < 0)
+        {
+            return Orientation.NE;
+        }
+
+        return Orientation.I;
+
+    }
+
+
+
+
+    private Orientation GetOppositeOrientation(Orientation orientation)
+    {
+
+        //N
+        if (orientation == Orientation.N)
+        {
+            return Orientation.S;
+        }
+        //NE
+        if (orientation == Orientation.NE)
+        {
+            return Orientation.SW;
+        }
+        //NW
+        if (orientation == Orientation.NW)
+        {
+            return Orientation.SE;
+        }
+        //E
+        if (orientation == Orientation.E)
+        {
+            return Orientation.W;
+        }
+        //W
+        if (orientation == Orientation.W)
+        {
+            return Orientation.E;
+        }
+        //S
+        if (orientation == Orientation.S)
+        {
+            return Orientation.N;
+        }
+        //SE
+        if (orientation == Orientation.SE)
+        {
+            return Orientation.NW;
+        }
+        //SW
+        if (orientation == Orientation.SW)
+        {
+            return Orientation.NE;
+        }
+
+        return Orientation.I;
+
+    }
+
+
     void OnCollisionEnter(Collision collider)
     {
         if (collider.gameObject.CompareTag("Vehicle") && !inVehicle)
         {
-
             EnterVehicle(collider.gameObject.GetComponent<Vehicle>());
             collider.gameObject.transform.rotation = transform.rotation;
             transform.position = collider.gameObject.transform.position;
