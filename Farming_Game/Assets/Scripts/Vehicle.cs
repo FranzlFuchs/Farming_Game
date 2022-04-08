@@ -6,25 +6,24 @@ public class Vehicle : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private Vector3 hitchPoint;
-
     SelectableList followerList = new SelectableList();
-
-
-
-
+    private Vector3 hitchPoint;
     private Follower followerAttached;
+    private VehicleController vehicleController;
+
+    public float exitDistanceRight;
 
     bool hasFollower;
+    bool hasPlayer;
 
     void Start()
     {
         hitchPoint = new Vector3(0, 0, -20);
+        exitDistanceRight = 20;
+
+        vehicleController = GetComponent<VehicleController>();
+
         hasFollower = false;
-
-
-
-
     }
 
     // Update is called once per frame
@@ -43,6 +42,7 @@ public class Vehicle : MonoBehaviour
     }
     public void SwitchFollower()
     {
+
         if (hasFollower == false)
         {
 
@@ -60,9 +60,12 @@ public class Vehicle : MonoBehaviour
         {
             hasFollower = false;
             followerAttached.Dettach();
-            followerList.SelectableInRange(followerAttached);
+            ResetCollider();
             return;
         }
+
+
+
     }
 
     public void ActivateFollowerGroundWorking()
@@ -87,9 +90,40 @@ public class Vehicle : MonoBehaviour
         return hitchPoint;
     }
 
+
+    public void Enter()
+    {
+        hasPlayer = true;
+        vehicleController.enabled = true;
+        ResetCollider();
+
+    }
+    public void Exit()
+    {
+        hasPlayer = false;
+        vehicleController.enabled = false;
+        followerList.Clear();
+    }
+
+    void ResetCollider()
+    {
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = true;
+    }
+
+    public Vector3 GetExitPoint()
+    {
+        Debug.Log(transform.localPosition);
+        Debug.Log(transform.position);
+
+        return transform.right * exitDistanceRight;
+
+        
+    }
+
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Follower") && hasFollower == false)
+        if (collider.CompareTag("Follower") && hasFollower == false && hasPlayer)
         {
             followerList.SelectableInRange(collider.GetComponent<Follower>());
         }
@@ -97,7 +131,7 @@ public class Vehicle : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider.CompareTag("Follower") && hasFollower == false)
+        if (collider.CompareTag("Follower") && hasFollower == false && hasPlayer)
         {
             followerList.SelectableOutOfRange(collider.GetComponent<Follower>());
         }

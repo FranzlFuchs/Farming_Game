@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerVehicleController : MonoBehaviour
+public class VehicleController : MonoBehaviour
 {
-    public Vehicle vehicle;
+    public Vehicle vehicle;  
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        vehicle = gameObject.GetComponent<Vehicle>();
+        vehicle = GetComponent<Vehicle>();     
     }
 
     // Update is called once per frame
