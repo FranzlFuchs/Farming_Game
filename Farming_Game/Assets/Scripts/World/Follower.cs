@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Follower : MonoBehaviour, ISelectable
+public class Follower : MonoBehaviour, ISelectable, IFollower
 {
     public Material defaultMat;
     public Material selectedMat;
     public Material inRangeMat;
     public GroundDetection groundDetector;
-
-    float distanceDown;
-
-
-    bool attached;
+    public float distanceDown;
     GameObject vehicle;
+
+    bool rambling;
 
     // Start is called before the first frame update
 
@@ -24,17 +22,18 @@ public class Follower : MonoBehaviour, ISelectable
         meshRenderer = GetComponent<MeshRenderer>();
         groundDetector = GetComponentInChildren<GroundDetection>();
         distanceDown = 2.5f;
+        rambling = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attached)
+        if (rambling)
         {
-            //transform.position = vehicle.transform.position;            
-            //transform.rotation = vehicle.transform.rotation;
+            transform.Rotate(new Vector3(1, 0, 0));
         }
+
 
     }
 
@@ -45,27 +44,24 @@ public class Follower : MonoBehaviour, ISelectable
         transform.localPosition = vehicle.GetComponent<Vehicle>().GetHitchPoint();
         transform.rotation = vehicle.transform.rotation;
         GetComponent<Rigidbody>().isKinematic = true;
-        attached = true;
     }
     public void Dettach()
     {
         groundDetector.Deactivate();
-        //transform.position = new Vector3(transform.position.x, transform.position.y + distanceDown, transform.position.z);
-
         transform.parent = null;
-        attached = false;
         vehicle = null;
         GetComponent<Rigidbody>().isKinematic = false;
     }
 
     public void Select()
     {
-        meshRenderer.material = selectedMat;
+        GetComponent<Renderer>().material.shader = Shader.Find("Outlined/Uniform");
     }
 
     public void Unselect()
     {
-        meshRenderer.material = inRangeMat;
+        GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+
     }
 
     public void GetInRange()
@@ -78,9 +74,13 @@ public class Follower : MonoBehaviour, ISelectable
         meshRenderer.material = defaultMat;
     }
 
-    public void DeactivateGroundWorking()
+    public void DeactivateGroundWorking(int secondsPullup)
     {
+
+
         groundDetector.Deactivate();
+        StartCoroutine(Ramble(secondsPullup));
+
         transform.position = new Vector3(transform.position.x, transform.position.y + distanceDown, transform.position.z);
 
     }
@@ -91,7 +91,16 @@ public class Follower : MonoBehaviour, ISelectable
 
     }
 
-    public void WorkTile(Tile tile){
+    public void WorkTile(Tile tile)
+    {
         tile.ChangeMaterial();
+    }
+
+    private IEnumerator Ramble(int seconds)
+    {
+        rambling = true;
+        yield return new WaitForSeconds(seconds);
+        rambling = false;
+        transform.rotation = vehicle.transform.rotation;
     }
 }

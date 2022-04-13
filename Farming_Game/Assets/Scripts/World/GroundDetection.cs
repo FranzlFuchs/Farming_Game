@@ -32,11 +32,37 @@ public class GroundDetection : MonoBehaviour
         active = false;
     }
 
+    void OnTriggerEnter(Collider coll)
+    {
+        /*
+        if (coll.gameObject.CompareTag("Tile"))
+        {
+
+            coll.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Outlined/Uniform");
+        }
+        */
+
+
+    }
+
+    void OnTriggerExit(Collider coll)
+    {
+        /*
+
+        if (coll.gameObject.CompareTag("Tile"))
+        {
+
+            coll.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+        }
+*/
+
+
+    }
     void OnTriggerStay(Collider coll)
     {
         if (coll.CompareTag("Tile") && active)
         {
-           gameObject.GetComponentInParent<Follower>().WorkTile(coll.gameObject.GetComponent<Tile>());
+            gameObject.GetComponentInParent<Follower>().WorkTile(coll.gameObject.GetComponent<Tile>());
         }
     }
 }

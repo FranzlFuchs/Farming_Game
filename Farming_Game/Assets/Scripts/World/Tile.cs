@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float sand;
+    float nutrients;
+
+    float water;
 
     public Material workedMaterial;
     private MeshRenderer meshRenderer;

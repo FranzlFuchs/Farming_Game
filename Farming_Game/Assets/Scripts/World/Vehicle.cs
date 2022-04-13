@@ -15,9 +15,15 @@ public class Vehicle : MonoBehaviour
     public float speedModifier;
     public float defaultspeedModifier;
     public float speedModifierGroundWorking;
+    public float speedModifierFollower;
 
     bool hasFollower;
+    
     bool hasPlayer;
+
+    int secondFollowerPullUp;
+
+    
 
     void Start()
     {
@@ -29,8 +35,8 @@ public class Vehicle : MonoBehaviour
         speedModifier = defaultspeedModifier;
 
         speedModifierGroundWorking = 0.5f;
-
-        hasFollower = false;
+        secondFollowerPullUp = 1;
+        hasFollower = false;        
     }
 
     // Update is called once per frame
@@ -52,17 +58,14 @@ public class Vehicle : MonoBehaviour
 
         if (hasFollower == false)
         {
-
             if (followerList.Count() > 0)
             {
                 hasFollower = true;
                 followerAttached = (Follower)followerList.GetSelected();
                 followerList.Clear();
-                followerAttached.Attach(this.gameObject);                
+                followerAttached.Attach(this.gameObject);
                 return;
             }
-
-
         }
 
         if (hasFollower == true)
@@ -72,9 +75,6 @@ public class Vehicle : MonoBehaviour
             ResetCollider();
             return;
         }
-
-
-
     }
 
     public void ActivateFollowerGroundWorking()
@@ -90,8 +90,8 @@ public class Vehicle : MonoBehaviour
     {
         if (hasFollower)
         {
-            followerAttached.DeactivateGroundWorking();
-            speedModifier = defaultspeedModifier;
+            followerAttached.DeactivateGroundWorking(secondFollowerPullUp);
+            StartCoroutine(Stay(secondFollowerPullUp));            
         }
 
     }
@@ -146,5 +146,16 @@ public class Vehicle : MonoBehaviour
         {
             followerList.SelectableOutOfRange(collider.GetComponent<Follower>());
         }
+    }
+
+    public IEnumerator Stay(int seconds)
+    {
+
+        speedModifier = 0;
+        Debug.Log("Stay");
+        yield return new WaitForSeconds(seconds);
+        speedModifier = defaultspeedModifier;
+       
+
     }
 }
