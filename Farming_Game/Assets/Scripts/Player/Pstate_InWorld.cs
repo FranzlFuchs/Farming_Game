@@ -9,7 +9,7 @@ public class Pstate_InWorld : IState
     public Pstate_InWorld(Player player)
     {
         this._player = player;
-        _movementController = new MovementController(_player.gameObject);
+        _movementController = new MovementController(_player);
         _movementController.SetSpeed(_player.GetSpeed());
     }
 

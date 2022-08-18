@@ -4,10 +4,11 @@ using UnityEngine;
 using Enums;
 using Interfaces;
 
-public class Vehicle : MonoBehaviour, IVehicle
+public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 {
 
     [SerializeField] private VehicleSO _vehicleSO;
+    //[SerializeField] private List<GameObject> _hitchers;
     private IState _currentState;
 
     [SerializeField] GameObject _exitPoint;
@@ -54,7 +55,7 @@ public class Vehicle : MonoBehaviour, IVehicle
     void Awake()
     {
         //_hitchPoints = new List<GameObject>((int)vehicleSO.numHitchPoints);
-        //_hitchers = new List<IVehicleHitcher>((int)vehicleSO.numHitchPoints);
+        //_hitchers = new List<GameObject>((int)_vehicleSO.numHitchPoints);
         //_hitchedFollowers = new List<IFollower>();
     }
 
@@ -89,6 +90,31 @@ public class Vehicle : MonoBehaviour, IVehicle
         {
             ChangeState(new Vstate_PlayerInside(this));
         }
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public void SetReverse()
+    {
+        return;
+    }
+
+    public void UnSetReverse()
+    {
+        return;
+    }
+
+    public void Hitched(IFollowerHitcher follower)
+    {
+        //ChangeState!
+    }
+
+    public void UnHitched()
+    {
+        
     }
 
     /*

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 using Interfaces;
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IMoveable
 {
 
     [SerializeField] private PlayerSO _playerConfig;
@@ -55,6 +55,21 @@ public class Player : MonoBehaviour
         }
 
         _currentState.OnCollisionEnter(coll);
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public void SetReverse()
+    {
+        return;
+    }
+
+    public void UnSetReverse()
+    {
+        return;
     }
 
 

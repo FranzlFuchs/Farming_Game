@@ -11,7 +11,7 @@ public class Vstate_PlayerInside : IState
     public Vstate_PlayerInside(Vehicle vehicle)
     {
         this._vehicle = vehicle;
-        _movementController = new MovementController(_vehicle.gameObject);
+        _movementController = new MovementController(_vehicle);
         _movementController.SetSpeed(_vehicle.GetSpeed());
 
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IFollowerHitcher
 {
-    void Hitch();
-    void Unhitch();
+    bool Hitch(VHitcher vhitcher);
+    bool Unhitch();
+
+    //float GetFollowerWeight();
 }

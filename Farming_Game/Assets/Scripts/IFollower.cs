@@ -5,7 +5,8 @@ using Enums;
 
 public interface IFollower
 {
-
+    float GetFollowerWeight();
+    GameObject GetGameObject();
     /*
     public void Attach(GameObject vehicle);
     

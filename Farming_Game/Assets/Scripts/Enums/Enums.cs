@@ -19,10 +19,20 @@ namespace Enums
         I
     }
 
-    public enum HitchPoints
+    /*
+        public enum HitchPoints
+        {
+            none = 0,
+            one,
+            two
+        }
+    */
+
+
+    public enum VHitcherType
     {
-        none = 0,
-        one,
-        two
+        front = 0,
+        back,
+        fix
     }
 }
