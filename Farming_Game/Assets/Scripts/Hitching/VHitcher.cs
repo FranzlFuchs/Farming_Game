@@ -31,10 +31,22 @@ public class VHitcher : MonoBehaviour, IVehicleHitcher
         if (_isHitched)
         {
 
-            if (Input.GetKeyDown(KeyCode.Mouse2))
+            if (_type == VHitcherType.back)
             {
-                _fHitcher.Unhitch();
-                _isHitched = false;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    _fHitcher.Unhitch();
+                    _isHitched = false;
+                }
+            }
+
+            if (_type == VHitcherType.front)
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    _fHitcher.Unhitch();
+                    _isHitched = false;
+                }
             }
         }
     }

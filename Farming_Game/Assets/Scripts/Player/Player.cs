@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, IMoveable
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
-        {            
+        {
             ChangeState(new Pstate_InWorld(this));
         }
         _currentState.Update();
@@ -35,9 +35,13 @@ public class Player : MonoBehaviour, IMoveable
     {
         return _playerConfig.speed;
     }
+    public float GetRotationSpeed()
+    {
+        return 0;
+    }
 
     void OnCollisionEnter(Collision coll)
-    {      
+    {
 
         if (coll.gameObject.CompareTag("Vehicle"))
         {
@@ -61,6 +65,12 @@ public class Player : MonoBehaviour, IMoveable
     {
         return gameObject;
     }
+
+    public void SetRigidBodyVelocity(Vector3 inputVector)
+    {
+        GetComponent<Rigidbody>().velocity = inputVector;
+    }
+
 
     public void SetReverse()
     {

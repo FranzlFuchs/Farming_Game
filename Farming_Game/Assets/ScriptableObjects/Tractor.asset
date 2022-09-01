@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad740727bfbfcae4a846542a9666698a, type: 3}
-  m_Name: MVP_Vehicle
+  m_Name: Tractor
   m_EditorClassIdentifier: 
-  speed: 100
-  rotationSpeed: 1.5
-  maxWeight: 0
-  seat: 0
+  speed: 54
+  weightMaxFront: 34
+  weightMaxBack: 5
+  frontFollowerPossible: 1
+  backFollowerPossible: 1

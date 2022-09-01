@@ -39,8 +39,13 @@ public class Pstate_InVehicleRiding : IState
     {
         // GRINDIG
         _player.transform.position = _vehicle.GetSaddlePointPosition();
-        _player.transform.rotation = _vehicle.GetExitPointRotation();
+        _player.transform.rotation = _vehicle.GetSaddlePointRotation();
 
+        return;
+    }
+
+    public void FixedUpdate()
+    {
         return;
     }
 }

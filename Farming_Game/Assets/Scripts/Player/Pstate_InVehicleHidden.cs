@@ -32,6 +32,11 @@ public class Pstate_InVehicleHidden : IState
         return;
     }
 
+    public void FixedUpdate()
+    {
+        return;
+    }
+
     public void OnCollisionEnter(Collision coll)
     {
         /*

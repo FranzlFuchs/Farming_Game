@@ -9,19 +9,22 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
     private bool _hitched = false;
     private bool _reHitchable = true;
     private VHitcher _vhitcher;
+    private Rigidbody _rb;
 
     float _rehitchCooldown = 2.0f;
     void Start()
     {
         _follower = GetComponentInParent<IFollower>();
-
+        _rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
         if (_hitched)
         {
-            this.gameObject.transform.position = _vhitcher.transform.position;
-            this.gameObject.transform.eulerAngles = _vhitcher.transform.eulerAngles;
+            //_rb.MovePosition(_vhitcher.transform.position);
+            //_rb.MoveRotation(_vhitcher.transform.rotation);
+            //this.gameObject.transform.position = _vhitcher.transform.position;
+            //this.gameObject.transform.eulerAngles = _vhitcher.transform.eulerAngles;
         }
     }
     public bool Hitch(VHitcher vhitcher)
@@ -31,10 +34,12 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
             _reHitchable = false;
 
             //Parenting umkehr damit Follower Hitcher folgt
-            this.gameObject.transform.parent = null;
-            _follower.GetGameObject().transform.parent = this.gameObject.transform;
+            //this.gameObject.transform.parent = null;
+            // _follower.GetGameObject().transform.parent = this.gameObject.transform;
+
             this._vhitcher = vhitcher;
             _hitched = true;
+            GetComponent<FixedJoint>().connectedBody = _vhitcher.GetComponent<Rigidbody>();
 
             return true;
         }

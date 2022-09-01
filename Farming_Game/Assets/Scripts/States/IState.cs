@@ -8,6 +8,7 @@ namespace Interfaces
     {
        void Enter();
        void Update();
+       void FixedUpdate();
        void Exit();
 
        void OnCollisionEnter(Collision coll);

@@ -7,6 +7,7 @@ using Enums;
 public class VehicleSO : ScriptableObject
 {
     public float speed;
+    public float rotationSpeed;
     public float maxWeight;
     //public HitchPoints numHitchPoints;
     public VehicleSeat seat;

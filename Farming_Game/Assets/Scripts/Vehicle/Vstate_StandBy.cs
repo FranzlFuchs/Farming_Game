@@ -20,6 +20,11 @@ public class Vstate_StandBy : IState
         return;
     }
 
+    public void FixedUpdate()
+    {
+        return;
+    }
+
     public void OnCollisionEnter(Collision coll)
     {
         return;

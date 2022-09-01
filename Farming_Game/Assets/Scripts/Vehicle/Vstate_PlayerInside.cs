@@ -6,12 +6,12 @@ using Interfaces;
 public class Vstate_PlayerInside : IState
 {
     private Vehicle _vehicle;
-    private MovementController _movementController;
+    private VehicleController _movementController;
 
     public Vstate_PlayerInside(Vehicle vehicle)
     {
         this._vehicle = vehicle;
-        _movementController = new MovementController(_vehicle);
+        _movementController = new VehicleController(_vehicle);
         _movementController.SetSpeed(_vehicle.GetSpeed());
 
     }
@@ -22,6 +22,11 @@ public class Vstate_PlayerInside : IState
     }
 
     public void Exit()
+    {
+        return;
+    }
+
+    public void FixedUpdate()
     {
         return;
     }

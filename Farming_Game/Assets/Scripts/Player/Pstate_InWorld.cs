@@ -5,11 +5,11 @@ public class Pstate_InWorld : IState
 {
 
     private Player _player;
-    private MovementController _movementController;
+    private PlayerController _movementController;
     public Pstate_InWorld(Player player)
     {
         this._player = player;
-        _movementController = new MovementController(_player);
+        _movementController = new PlayerController(_player);
         _movementController.SetSpeed(_player.GetSpeed());
     }
 
@@ -31,6 +31,11 @@ public class Pstate_InWorld : IState
     }
 
     public void OnCollisionEnter(Collision coll)
+    {
+        return;
+    }
+
+    public void FixedUpdate()
     {
         return;
     }

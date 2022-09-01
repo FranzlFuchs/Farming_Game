@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using Enums;
 using UnityEngine;
 
-public class MovementController
+public class PlayerController
 {
-
     float reverseSpeedModifier = 0.5f;
 
     IMoveable Movee;
@@ -14,6 +13,7 @@ public class MovementController
     public float verticalInput;
     public float horizontalInput;
     public float speed;
+    public float rotspeed;
     public Orientation lastPlayerOrientation;
     public Orientation playerOrientation;
     private RotationManager rotationManager = new RotationManager();
@@ -21,7 +21,7 @@ public class MovementController
 
     bool inReverse;
 
-    public MovementController(IMoveable moveable)
+    public PlayerController(IMoveable moveable)
     {
         this.Movee = moveable;
         this.MoveeGO = moveable.GetGameObject();
@@ -40,7 +40,7 @@ public class MovementController
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             inReverse = !inReverse;
-            
+
             if (inReverse)
             {
 
@@ -58,17 +58,13 @@ public class MovementController
         if (!inReverse)
         {
             playerOrientation = GetOrientation(horizontalInput, verticalInput);
-
-            MoveeGO.transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime, 0, verticalInput * speed * Time.deltaTime), Space.World);
-            //MoveeRB.AddForce(MoveeGO.transform.forward * horizontalInput * speed);
+            MoveeRB.velocity = new Vector3(horizontalInput * speed, MoveeRB.velocity.y, verticalInput * speed);
         }
 
         if (inReverse)
         {
             playerOrientation = GetOrientation(-horizontalInput, -verticalInput);
-
-            MoveeGO.transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime * reverseSpeedModifier, 0, verticalInput * speed * Time.deltaTime * reverseSpeedModifier), Space.World);
-            //MoveeRB.AddForce(MoveeGO.transform.forward * horizontalInput * speed * reverseSpeedModifier);
+            MoveeRB.velocity = new Vector3(horizontalInput * speed * reverseSpeedModifier, MoveeRB.velocity.y, verticalInput * speed * reverseSpeedModifier);
         }
 
         if (playerOrientation != Orientation.I)

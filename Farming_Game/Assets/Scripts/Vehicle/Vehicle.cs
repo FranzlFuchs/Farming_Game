@@ -17,7 +17,10 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 
     //Hitchpoints are Local space
 
-
+    public void SetRigidBodyVelocity(Vector3 inputVector)
+    {
+        GetComponent<Rigidbody>().velocity = inputVector;
+    }
 
     //private List<GameObject> _hitcherGameObjects;
     //private List<IVehicleHitcher> _hitchers;
@@ -38,11 +41,22 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
     {
         return _vehicleSO.speed;
     }
+    public float GetRotationSpeed()
+    {
+        return _vehicleSO.rotationSpeed;
+    }
 
     public Quaternion GetExitPointRotation()
     {
 
         return this._exitPoint.transform.rotation;
+
+    }
+
+    public Quaternion GetSaddlePointRotation()
+    {
+
+        return this._saddlePoint.transform.rotation;
 
     }
 
@@ -114,7 +128,8 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 
     public void UnHitched()
     {
-        
+        //ChangeState!
+
     }
 
     /*
