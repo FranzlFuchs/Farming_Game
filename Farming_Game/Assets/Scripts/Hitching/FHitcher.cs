@@ -40,6 +40,7 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
             this._vhitcher = vhitcher;
             _hitched = true;
             GetComponent<FixedJoint>().connectedBody = _vhitcher.GetComponent<Rigidbody>();
+            
 
             return true;
         }
