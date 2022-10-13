@@ -7,8 +7,6 @@ TagManager:
   - Follower
   - Vehicle
   - Tile
-  - FHitcher
-  - VHitcher
   layers:
   - Default
   - TransparentFX
