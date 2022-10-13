@@ -1,5 +1,10 @@
 namespace Enums
 {
+    public enum VehicleSeat
+    {
+        rideable,
+        hidden
+    }
 
     public enum Orientation
     {
@@ -12,5 +17,22 @@ namespace Enums
         SE,
         SW,
         I
-    }   
+    }
+
+    /*
+        public enum HitchPoints
+        {
+            none = 0,
+            one,
+            two
+        }
+    */
+
+
+    public enum VHitcherType
+    {
+        front = 0,
+        back,
+        fix
+    }
 }
