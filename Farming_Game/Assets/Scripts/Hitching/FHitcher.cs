@@ -21,8 +21,8 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
     {
         if (_hitched)
         {
-            //_rb.MovePosition(_vhitcher.transform.position);
-            //_rb.MoveRotation(_vhitcher.transform.rotation);
+            _rb.MovePosition(_vhitcher.transform.position);
+            _rb.MoveRotation(_vhitcher.transform.rotation);
             //this.gameObject.transform.position = _vhitcher.transform.position;
             //this.gameObject.transform.eulerAngles = _vhitcher.transform.eulerAngles;
         }
@@ -39,8 +39,8 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
 
             this._vhitcher = vhitcher;
             _hitched = true;
-            GetComponent<FixedJoint>().connectedBody = _vhitcher.GetComponent<Rigidbody>();
-            
+            // GetComponent<FixedJoint>().connectedBody = _vhitcher.GetComponent<Rigidbody>();
+
 
             return true;
         }
