@@ -53,5 +53,19 @@
         "temp/":true,
         "Temp/":true
     },
-    "DockerRun.DisableDockerrc": true
+    "DockerRun.DisableDockerrc": true,
+    "files.associations": {
+        "vector": "cpp",
+        "xstddef": "cpp",
+        "functional": "cpp",
+        "cmath": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "random": "cpp",
+        "system_error": "cpp",
+        "thread": "cpp",
+        "type_traits": "cpp",
+        "xmemory": "cpp",
+        "xstring": "cpp"
+    }
 }

@@ -8,6 +8,9 @@ public class Player : MonoBehaviour, IMoveable
 
     [SerializeField] private PlayerSO _playerConfig;
 
+    [SerializeField] private Animator _playerAnimator;
+
+
     private IState _currentState;
     public void ChangeState(IState newState)
     {
@@ -82,6 +85,20 @@ public class Player : MonoBehaviour, IMoveable
         return;
     }
 
+    public void AnimateStanding()
+    {
+        if (_playerAnimator != null)
+        {
+            _playerAnimator.SetTrigger("Standing");
+        }
+    }
+    public void AnimateGoing()
+    {
+        if (_playerAnimator != null)
+        {
+            _playerAnimator.SetTrigger("Moving");
+        }
+    }
 
     /*
     public float verticalInput;

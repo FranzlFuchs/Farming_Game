@@ -10,7 +10,6 @@ public class VehicleSO : ScriptableObject
     public float rotationSpeed;
     public float maxWeight;
     //public HitchPoints numHitchPoints;
-    public VehicleSeat seat;
+    public VehicleSeat seat;   
 
-  
 }

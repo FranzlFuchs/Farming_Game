@@ -8,6 +8,7 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 {
 
     [SerializeField] private VehicleSO _vehicleSO;
+    private Animator _vehicleAnimator;
     //[SerializeField] private List<GameObject> _hitchers;
     private IState _currentState;
 
@@ -68,15 +69,15 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 
     void Awake()
     {
-        //_hitchPoints = new List<GameObject>((int)vehicleSO.numHitchPoints);
-        //_hitchers = new List<GameObject>((int)_vehicleSO.numHitchPoints);
-        //_hitchedFollowers = new List<IFollower>();
+
     }
 
     void Start()
     {
+        _vehicleAnimator = GetComponent<Animator>();
         _currentState = new Vstate_StandBy(this);
         _currentState.Enter();
+
     }
 
     void Update()
@@ -104,6 +105,17 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
         {
             ChangeState(new Vstate_PlayerInside(this));
         }
+    }
+
+    public void AnimateStanding()
+    {
+        _vehicleAnimator.SetTrigger("Standing");
+        _vehicleAnimator.ResetTrigger("Moving");
+    }
+    public void AnimateGoing()
+    {
+        _vehicleAnimator.SetTrigger("Moving");
+        _vehicleAnimator.ResetTrigger("Standing");
     }
 
     public GameObject GetGameObject()

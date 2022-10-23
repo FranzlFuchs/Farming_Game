@@ -12,5 +12,9 @@ public interface IMoveable
 
     void SetReverse();
     void UnSetReverse();
+
+     public void AnimateStanding();
+    public void AnimateGoing();
+
     
 }

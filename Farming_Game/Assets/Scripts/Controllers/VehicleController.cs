@@ -20,7 +20,7 @@ public class VehicleController
     private RotationManager rotationManager = new RotationManager();
     private Quaternion quat = new Quaternion();
     public float rot;
-
+    private bool _moving;
 
     bool inReverse;
 
@@ -32,6 +32,7 @@ public class VehicleController
         inReverse = false;
         speed = moveable.GetSpeed();
         rotspeed = moveable.GetRotationSpeed();
+        _moving = false;
     }
 
     public void SetSpeed(float speed)
@@ -58,6 +59,18 @@ public class VehicleController
 
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        if(verticalInput != 0 || horizontalInput != 0 && !_moving)
+        {
+            _moving = true;
+            Movee.AnimateGoing();
+        }
+
+        if(verticalInput == 0 && horizontalInput == 0 && _moving)
+        {
+            _moving = false;
+            Movee.AnimateStanding();
+        }
 
         MoveeGO.transform.rotation = Quaternion.RotateTowards(MoveeGO.transform.rotation, quat, rotspeed);
 
@@ -111,7 +124,7 @@ public class VehicleController
             else
             {
                 //MoveeRB.AddForce(MoveeGO.transform.forward * 1200, ForceMode.Force);
-                 MoveeRB.velocity = MoveeGO.transform.forward * speed * reverseSpeedModifier;
+                MoveeRB.velocity = MoveeGO.transform.forward * speed * reverseSpeedModifier;
             }
         }
 
