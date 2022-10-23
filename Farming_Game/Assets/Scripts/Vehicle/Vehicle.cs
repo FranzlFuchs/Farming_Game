@@ -109,13 +109,19 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 
     public void AnimateStanding()
     {
-        _vehicleAnimator.SetTrigger("Standing");
-        _vehicleAnimator.ResetTrigger("Moving");
+        if (_vehicleAnimator != null)
+        {
+            _vehicleAnimator.SetTrigger("Standing");
+            _vehicleAnimator.ResetTrigger("Moving");
+        }
     }
     public void AnimateGoing()
     {
-        _vehicleAnimator.SetTrigger("Moving");
-        _vehicleAnimator.ResetTrigger("Standing");
+        if (_vehicleAnimator != null)
+        {
+            _vehicleAnimator.SetTrigger("Moving");
+            _vehicleAnimator.ResetTrigger("Standing");
+        }
     }
 
     public GameObject GetGameObject()
