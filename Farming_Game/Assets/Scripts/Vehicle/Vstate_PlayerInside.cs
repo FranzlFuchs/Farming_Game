@@ -23,7 +23,7 @@ public class Vstate_PlayerInside : IState
 
     public void Exit()
     {
-        return;
+        _vehicle.AnimateStanding();
     }
 
     public void FixedUpdate()
