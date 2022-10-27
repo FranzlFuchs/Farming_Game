@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MVP_Vehicle_Horse
   m_EditorClassIdentifier: 
   speed: 100
-  rotationSpeed: 10
+  rotationSpeed: 1
   maxWeight: 0
   seat: 0

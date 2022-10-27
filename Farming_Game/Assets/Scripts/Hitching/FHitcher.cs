@@ -22,6 +22,7 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
         if (_hitched)
         {
             _rb.MovePosition(_vhitcher.transform.position);
+            _rb.MovePosition(new Vector3(_vhitcher.transform.position.x, gameObject.transform.position.y, _vhitcher.transform.position.z));
             _rb.MoveRotation(_vhitcher.transform.rotation);
             //this.gameObject.transform.position = _vhitcher.transform.position;
             //this.gameObject.transform.eulerAngles = _vhitcher.transform.eulerAngles;
@@ -52,8 +53,8 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
     {
 
         //Parenting umkehr damit Hitcher Follower folgt
-        _follower.GetGameObject().transform.parent = null;
-        this.gameObject.transform.parent = _follower.GetGameObject().transform;
+        //_follower.GetGameObject().transform.parent = null;
+        //this.gameObject.transform.parent = _follower.GetGameObject().transform;
         this._vhitcher = null;
         _hitched = false;
 
@@ -70,7 +71,6 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
 
     IEnumerator HitchCooldown()
     {
-
         yield return new WaitForSeconds(_rehitchCooldown);
         _reHitchable = true;
     }
