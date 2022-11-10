@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: e2f0f16bc8a3367439c6f7528a1c8b5f
+guid: 1c5a2e90088bc8047831ad2676030ac5
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tile_Grass
+    second: {fileID: 2100000, guid: faf6922ed0dff50478f722d8bac2adb4, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tile_Grass_texture
+    second: {fileID: 2800000, guid: 69aca12bb716a0a46b54cf5ae1cd3d55, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
