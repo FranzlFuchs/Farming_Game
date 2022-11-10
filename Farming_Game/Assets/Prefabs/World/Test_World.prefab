@@ -46619,7 +46619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8252936519889387413}
   m_Layer: 0
-  m_Name: MVP_World
+  m_Name: Test_World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

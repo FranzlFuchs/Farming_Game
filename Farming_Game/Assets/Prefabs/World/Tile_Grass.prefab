@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8457295487273311362}
   - component: {fileID: -4929017714573805907}
   - component: {fileID: -2400316503847553464}
+  - component: {fileID: 7428601313119183774}
   m_Layer: 0
   m_Name: Tile_Grass
   m_TagString: Untagged
@@ -113,3 +114,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &7428601313119183774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952975548469165399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca0ad0d75b5e64459fab6f1548de16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workedMaterial: {fileID: 2100000, guid: 95f9eadadeca3044994a4aa16f783ccc, type: 2}

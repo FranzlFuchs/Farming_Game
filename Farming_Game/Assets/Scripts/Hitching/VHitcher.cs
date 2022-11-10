@@ -36,6 +36,8 @@ public class VHitcher : MonoBehaviour, IVehicleHitcher
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     _fHitcher.Unhitch();
+                    //TROUBLES BEI FRONT BACK HITCHING
+                    _parentVehicle.UnHitched();
                     _isHitched = false;
                 }
             }
@@ -45,6 +47,8 @@ public class VHitcher : MonoBehaviour, IVehicleHitcher
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     _fHitcher.Unhitch();
+                    //TROUBLES BEI FRONT BACK HITCHING
+                    _parentVehicle.UnHitched();
                     _isHitched = false;
                 }
             }

@@ -12,6 +12,11 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
     private Rigidbody _rb;
 
     float _rehitchCooldown = 2.0f;
+
+    public IFollower GetFollower()
+    {
+        return _follower;
+    }
     void Start()
     {
         _follower = GetComponentInParent<IFollower>();
@@ -34,6 +39,8 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
         {
             _reHitchable = false;
 
+            _follower.Hitch();
+
             //Parenting umkehr damit Follower Hitcher folgt
             //this.gameObject.transform.parent = null;
             // _follower.GetGameObject().transform.parent = this.gameObject.transform;
@@ -55,6 +62,8 @@ public class FHitcher : MonoBehaviour, IFollowerHitcher
         //Parenting umkehr damit Hitcher Follower folgt
         //_follower.GetGameObject().transform.parent = null;
         //this.gameObject.transform.parent = _follower.GetGameObject().transform;
+
+        _follower.Unhitch();
         this._vhitcher = null;
         _hitched = false;
 

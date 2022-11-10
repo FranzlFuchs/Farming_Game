@@ -1,20 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
 public class Follower : MonoBehaviour, IFollower
 {
-   FollowerSO _followerSO;
-    public float GetFollowerWeight()
+
+    public FollowerSO _followerSO;
+    private Animator _followerAnimator;
+    private IState _currentState;
+    private bool _active;
+
+    public GameObject Gadget;
+    public IGadget _gadget;
+
+    void Start()
     {
-        //return _followerSO.weight;
-        return 0;
+        _followerAnimator = GetComponent<Animator>();
+        _currentState = new Fstate_StandBy(this);
+        _currentState.Enter();
+        _active = false;
+        _gadget = Gadget.GetComponent<IGadget>();
     }
 
-    public GameObject GetGameObject()
+    void Update()
     {
-        return this.gameObject;
+
+      _currentState.Update();
+
     }
+
+    public void Activate()
+    {
+        if (Gadget != null && !_active)
+        {
+            _gadget.Activate();
+            _active = true;
+        }
+    }
+
+    public void Deactivate()
+    {
+        if (Gadget != null && _active)
+        {
+            _gadget.Deactivate();
+            _active = false;
+        }
+    }
+
+    public float GetWeight()
+    {
+        return _followerSO.weight;
+    }
+
+    public void Hitch()
+    {
+        ChangeState(new Fstate_Hitched(this));
+    }
+
+    public void Unhitch()
+    {
+        ChangeState(new Fstate_StandBy(this));
+    }
+    public void ChangeState(IState newState)
+    {
+        _currentState.Exit();
+        _currentState = newState;
+        newState.Enter();
+    }
+
     /*
 public Material defaultMat;
 public Material selectedMat;

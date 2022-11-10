@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad740727bfbfcae4a846542a9666698a, type: 3}
-  m_Name: MVP_Vehicle
+  m_Script: {fileID: 11500000, guid: cfe32e2b63ab973419dc9b4f3be342e3, type: 3}
+  m_Name: MVP_Cart
   m_EditorClassIdentifier: 
-  speed: 100
-  rotationSpeed: 1.5
-  maxWeight: 200
-  seat: 0
+  weight: 100

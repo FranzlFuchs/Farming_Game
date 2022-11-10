@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   rotationSpeed: 1
-  maxWeight: 0
+  maxWeight: 200
   seat: 0
