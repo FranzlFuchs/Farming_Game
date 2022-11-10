@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public class FollowerSO : ScriptableObject
 {
-    float weight;
+    public float weight;
 
     /*
     public Material defaultMat;

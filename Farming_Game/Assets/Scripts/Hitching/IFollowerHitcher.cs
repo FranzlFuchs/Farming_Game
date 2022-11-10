@@ -6,6 +6,6 @@ public interface IFollowerHitcher
 {
     bool Hitch(VHitcher vhitcher);
     bool Unhitch();
-
+    IFollower GetFollower();
     //float GetFollowerWeight();
 }

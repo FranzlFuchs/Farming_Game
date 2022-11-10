@@ -5,7 +5,7 @@ using Enums;
 
 [CreateAssetMenu]
 public class VehicleSO : ScriptableObject
-{
+{  
     public float speed;
     public float rotationSpeed;
     public float maxWeight;

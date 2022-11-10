@@ -8,6 +8,9 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 {
 
     [SerializeField] private VehicleSO _vehicleSO;
+
+    public float CarriedWeight;
+
     private Animator _vehicleAnimator;
     //[SerializeField] private List<GameObject> _hitchers;
     private IState _currentState;
@@ -16,7 +19,14 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 
     [SerializeField] GameObject _saddlePoint;
 
+    private IFollower _follower;
+
     //Hitchpoints are Local space
+
+    public float GetMaxWeight()
+    {
+        return _vehicleSO.maxWeight;
+    }
 
     public void SetRigidBodyVelocity(Vector3 inputVector)
     {
@@ -77,7 +87,8 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
         _vehicleAnimator = GetComponent<Animator>();
         _currentState = new Vstate_StandBy(this);
         _currentState.Enter();
-
+        _follower = null;
+        CarriedWeight = 0;
     }
 
     void Update()
@@ -88,9 +99,18 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
         {
             ChangeState(new Vstate_StandBy(this));
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (_follower != null)
+            {
+                ChangeState(new Vstate_FollowerActivated(this, _follower));
+            }
+        }
+
     }
 
-    void ChangeState(IState newState)
+    public void ChangeState(IState newState)
     {
         _currentState.Exit();
         _currentState = newState;
@@ -109,13 +129,19 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 
     public void AnimateStanding()
     {
-        _vehicleAnimator.SetTrigger("Standing");
-        _vehicleAnimator.ResetTrigger("Moving");
+        if (_vehicleAnimator != null)
+        {
+            _vehicleAnimator.SetTrigger("Standing");
+            _vehicleAnimator.ResetTrigger("Moving");
+        }
     }
     public void AnimateGoing()
     {
-        _vehicleAnimator.SetTrigger("Moving");
-        _vehicleAnimator.ResetTrigger("Standing");
+        if (_vehicleAnimator != null)
+        {
+            _vehicleAnimator.SetTrigger("Moving");
+            _vehicleAnimator.ResetTrigger("Standing");
+        }
     }
 
     public GameObject GetGameObject()
@@ -135,13 +161,15 @@ public class Vehicle : MonoBehaviour, IVehicle, IMoveable, IHitchee
 
     public void Hitched(IFollowerHitcher follower)
     {
-        //ChangeState!
+        ChangeState(new Vstate_FollowerHitched(this, follower.GetFollower()));
+        _follower = follower.GetFollower();
     }
 
     public void UnHitched()
     {
-        //ChangeState!
-
+        //TROUBLES BEI FRONT BACK HITCHING!
+        ChangeState(new Vstate_PlayerInside(this));
+        _follower = null;
     }
 
     /*

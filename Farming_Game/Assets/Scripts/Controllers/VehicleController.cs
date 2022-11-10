@@ -60,13 +60,13 @@ public class VehicleController
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if(verticalInput != 0 || horizontalInput != 0 && !_moving)
+        if (verticalInput != 0 || horizontalInput != 0 && !_moving)
         {
             _moving = true;
             Movee.AnimateGoing();
         }
 
-        if(verticalInput == 0 && horizontalInput == 0 && _moving)
+        if (verticalInput == 0 && horizontalInput == 0 && _moving)
         {
             _moving = false;
             Movee.AnimateStanding();
@@ -96,9 +96,11 @@ public class VehicleController
             }
             else
             {
+                if (verticalInput != 0 || horizontalInput != 0)
+                {
+                    MoveeRB.velocity = MoveeGO.transform.forward * speed;
 
-                //MoveeRB.AddForce(MoveeGO.transform.forward, ForceMode.VelocityChange);
-                MoveeRB.velocity = MoveeGO.transform.forward * speed;
+                }
             }
         }
 

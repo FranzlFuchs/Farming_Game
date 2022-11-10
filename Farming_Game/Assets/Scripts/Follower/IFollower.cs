@@ -5,30 +5,14 @@ using Enums;
 
 public interface IFollower
 {
-    float GetFollowerWeight();
-    GameObject GetGameObject();
-    /*
-    public void Attach(GameObject vehicle);
+    float GetWeight();
     
-    public void Dettach();
+    public void Hitch();
     
-    public void Select();
+    public void Unhitch();
     
-    public void Unselect();
+    public void Activate();
     
-    public void GetInRange();
-    
-
-    public void GetOutOfRange();
-    
-        
-
-    public void DeactivateGroundWorking(int secondsPullup);
-    
-    public void ActivateGroundWorking();
-    
-     public void WorkTile(Tile tile);
-
-     */
+    public void Deactivate();   
 
 }
