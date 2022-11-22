@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, ITile
 {
     float sand;
     float nutrients;
@@ -10,11 +10,12 @@ public class Tile : MonoBehaviour
     float water;
 
     public Material workedMaterial;
-    private MeshRenderer meshRenderer;
+    private Renderer meshRenderer;
+    private MaterialPropertyBlock mBlock;
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-
+        meshRenderer = GetComponent<Renderer>();
+        mBlock = new MaterialPropertyBlock();
     }
 
     // Update is called once per frame
@@ -23,8 +24,18 @@ public class Tile : MonoBehaviour
 
     }
 
-    public void ChangeMaterial()
+    public void Plow()
     {
-        meshRenderer.material = workedMaterial;
+        meshRenderer.GetPropertyBlock(mBlock);
+        mBlock.SetFloat("Plow_grade", 1.0f);
+        meshRenderer.SetPropertyBlock(mBlock);        
+    }
+
+    public void Plow(int degree)
+    {
+        meshRenderer.GetPropertyBlock(mBlock);
+        mBlock.SetFloat("Plow_grade", 1.0f);
+        mBlock.SetFloat("Plow_rotation", degree);
+        meshRenderer.SetPropertyBlock(mBlock);        
     }
 }

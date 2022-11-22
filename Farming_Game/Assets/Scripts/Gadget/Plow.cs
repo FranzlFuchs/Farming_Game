@@ -37,7 +37,10 @@ public class Plow : MonoBehaviour, IGadget
             if (coll.CompareTag("Tile"))
             {
                 //TILE CHANGE
-                coll.gameObject.GetComponent<Tile>().ChangeMaterial();
+                int deg = Mathf.CeilToInt(this.transform.eulerAngles.y) * -1;
+                coll.gameObject.GetComponent<Tile>().Plow(deg);
+
+                Debug.Log(deg);
             }
         }
     }
