@@ -89,8 +89,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Plow_grade: 0
-    - Vector1_32adf2a580a94e4582d256d4e0ca7392: 2.54
-    - Vector1_94e0d4fb6b224e9bb9ba9823a9edc985: 0.77
+    - Plow_rotation: 0
+    - Vector1_32adf2a580a94e4582d256d4e0ca7392: 1.93
+    - Vector1_94e0d4fb6b224e9bb9ba9823a9edc985: 0.7
     - Vector1_d07a669e6c2a47c9b11f0dbd7e9a20fe: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
