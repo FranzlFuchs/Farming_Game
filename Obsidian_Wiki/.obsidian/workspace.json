@@ -1,0 +1,135 @@
+{
+  "main": {
+    "id": "b65d99df828c1291",
+    "type": "split",
+    "children": [
+      {
+        "id": "0c8560a667cd2099",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "facb9313297ecef7",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d89f60f70cdf06af",
+    "type": "split",
+    "children": [
+      {
+        "id": "92a1302f6ac14044",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7fea12930fbec227",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "73f096f0c3289f63",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "663f2d68e87ec6ee",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "28fdfe024c4feaa1",
+    "type": "split",
+    "children": [
+      {
+        "id": "1f1644807dd1a729",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "db34b06641e2a907",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d0c7e8565e8c56a8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "005b00b8368381eb",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1644a7796d6f4c2b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "facb9313297ecef7",
+  "lastOpenFiles": [
+    "Farming_Game_Wiki/Gamedesign Document.md"
+  ]
+}
