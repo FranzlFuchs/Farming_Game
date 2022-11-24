@@ -4,18 +4,74 @@
     "type": "split",
     "children": [
       {
-        "id": "bc6b824718adc527",
-        "type": "tabs",
+        "id": "d223fa92abab3c26",
+        "type": "split",
         "children": [
           {
-            "id": "6f23560bb78f8663",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
+            "id": "bc6b824718adc527",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "6f23560bb78f8663",
+                "type": "leaf",
+                "state": {
+                  "type": "graph",
+                  "state": {}
+                }
+              },
+              {
+                "id": "9c0033e597a04ceb",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {}
+                }
+              },
+              {
+                "id": "cbfd493272117dfe",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Gamedesign Document.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "710e7f6ea50127ad",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Gamedesign Document.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ],
+            "currentTab": 3
+          },
+          {
+            "id": "36b4f2ee05321e0f",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "fadff2ce36f81c68",
+                "type": "leaf",
+                "state": {
+                  "type": "diagram-edit",
+                  "state": {
+                    "file": "Untitled Diagram.svg"
+                  }
+                }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -81,6 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Gamedesign Document.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,8 +154,9 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Gamedesign Document.md",
                 "linksCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -118,16 +176,24 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Gamedesign Document.md"
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
-  "active": "6f23560bb78f8663",
-  "lastOpenFiles": []
+  "active": "710e7f6ea50127ad",
+  "lastOpenFiles": [
+    "Diagramm.md",
+    "New Note.md",
+    "Untitled Diagram.svg",
+    "Gamedesign Document.md",
+    "New Note 2.md"
+  ]
 }
