@@ -20,6 +20,8 @@ public class PlayerController
     public float rot;
 
     bool inReverse;
+    bool moving;
+    bool movingBefore;
 
     public PlayerController(IMoveable moveable)
     {
@@ -51,6 +53,28 @@ public class PlayerController
 
             }
         }
+        movingBefore = moving;
+        if (verticalInput == 0 && horizontalInput == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            moving = true;
+        }
+
+        if (moving != movingBefore)
+        {
+            if (movingBefore == false)
+            {
+                Movee.AnimateGoing();
+            }
+            else
+            {
+                Movee.AnimateStanding();
+
+            }
+        }
 
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -71,6 +95,7 @@ public class PlayerController
         {
             lastPlayerOrientation = playerOrientation;
             rot = rotationManager.GetRotation(playerOrientation);
+            Movee.AnimateGoing();
         }
 
         MoveeGO.transform.eulerAngles = new Vector3(0, rot, 0);

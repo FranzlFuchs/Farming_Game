@@ -17,6 +17,8 @@ public class Pstate_InVehicleRiding : IState
     public void Enter()
     {
         _player.GetComponent<Collider>().enabled = false;
+        //SITTING
+        _player.AnimateStanding();
         return;
     }
 

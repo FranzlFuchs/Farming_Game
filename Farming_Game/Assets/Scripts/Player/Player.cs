@@ -21,11 +21,12 @@ public class Player : MonoBehaviour, IMoveable
 
     void Start()
     {
+        _playerAnimator = GetComponent<Animator>();
         _currentState = new Pstate_InWorld(this);
         _currentState.Enter();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -89,14 +90,16 @@ public class Player : MonoBehaviour, IMoveable
     {
         if (_playerAnimator != null)
         {
-            _playerAnimator.SetTrigger("Standing");
+            _playerAnimator.SetBool("Running", false);
+            Debug.Log("STOP");
         }
     }
     public void AnimateGoing()
     {
         if (_playerAnimator != null)
         {
-            _playerAnimator.SetTrigger("Moving");
+            _playerAnimator.SetBool("Running", true);
+            Debug.Log("RUN");
         }
     }
 
