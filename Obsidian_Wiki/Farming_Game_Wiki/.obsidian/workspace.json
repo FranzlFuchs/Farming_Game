@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "cb5e97b962caf182",
+        "id": "b224f31797d70bfa",
         "type": "tabs",
         "children": [
           {
-            "id": "b208eaed142ddf02",
+            "id": "3e7dfe506a8b5287",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -159,11 +159,11 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "b208eaed142ddf02",
+  "active": "3e7dfe506a8b5287",
   "lastOpenFiles": [
+    "MoodBoard.md",
     "Random Thoughts.md",
     "MVP.md",
-    "MoodBoard.md",
     "Gamedesign Document.md",
     "Moodboard_imgs/Pasted image 20221125145651.png",
     "Farm_Game.svg",
