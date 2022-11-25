@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "ec720702967d6c00",
+        "id": "cb5e97b962caf182",
         "type": "tabs",
         "children": [
           {
-            "id": "ec4129f318ff79df",
+            "id": "b208eaed142ddf02",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {}
             }
           }
@@ -25,47 +25,78 @@
     "type": "split",
     "children": [
       {
-        "id": "31e34c6ba7c4fa01",
-        "type": "tabs",
+        "id": "d81f7cee84fc23ad",
+        "type": "split",
         "children": [
           {
-            "id": "f428a569fcbeed43",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical"
+            "id": "31e34c6ba7c4fa01",
+            "type": "tabs",
+            "dimension": 52.358490566037744,
+            "children": [
+              {
+                "id": "254b348c7d6f1eab",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "e6cd40c2bd74b15c",
+                "type": "leaf",
+                "state": {
+                  "type": "starred",
+                  "state": {}
+                }
               }
-            }
+            ]
           },
           {
-            "id": "254b348c7d6f1eab",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical"
+            "id": "7e20f8930e0a6025",
+            "type": "tabs",
+            "dimension": 24.056603773584907,
+            "children": [
+              {
+                "id": "24a25f04ec05af9c",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {}
+                }
               }
-            }
+            ]
           },
           {
-            "id": "e6cd40c2bd74b15c",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
+            "id": "8e609f328c813ae5",
+            "type": "tabs",
+            "dimension": 23.58490566037736,
+            "children": [
+              {
+                "id": "d679bd15c6b4e4da",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "vertical"
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 847.5,
+    "collapsed": true
   },
   "right": {
     "id": "955a63aca2771138",
@@ -122,18 +153,23 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
-  "active": "ec4129f318ff79df",
+  "active": "b208eaed142ddf02",
   "lastOpenFiles": [
-    "Untitled Diagram.svg",
+    "Random Thoughts.md",
+    "MVP.md",
+    "MoodBoard.md",
     "Gamedesign Document.md",
-    "Diagramm.md",
-    "New Note.md",
-    "New Note 2.md"
+    "Moodboard_imgs/Pasted image 20221125145651.png",
+    "Farm_Game.svg",
+    "Game Logic UML.md",
+    "Untitled Diagram 1.svg.md",
+    "Untitled Diagram 1.svg",
+    "2022-11-25.md"
   ]
 }
