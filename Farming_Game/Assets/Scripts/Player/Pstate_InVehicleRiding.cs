@@ -25,7 +25,7 @@ public class Pstate_InVehicleRiding : IState
     public void Exit()
     {
         _player.transform.position = _vehicle.GetExitPointPosition();
-        _player.transform.rotation = _vehicle.GetExitPointRotation();
+        _player.transform.rotation = _vehicle.transform.rotation;
 
         _player.GetComponent<Collider>().enabled = true;
 
@@ -38,8 +38,7 @@ public class Pstate_InVehicleRiding : IState
     }
 
     public void Update()
-    {
-        // GRINDIG
+    {        
         _player.transform.position = _vehicle.GetSaddlePointPosition();
         _player.transform.rotation = _vehicle.GetSaddlePointRotation();
 

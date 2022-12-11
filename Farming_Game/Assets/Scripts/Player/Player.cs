@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, IMoveable
         _currentState.Enter();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -91,7 +91,6 @@ public class Player : MonoBehaviour, IMoveable
         if (_playerAnimator != null)
         {
             _playerAnimator.SetBool("Running", false);
-            Debug.Log("STOP");
         }
     }
     public void AnimateGoing()
@@ -99,7 +98,6 @@ public class Player : MonoBehaviour, IMoveable
         if (_playerAnimator != null)
         {
             _playerAnimator.SetBool("Running", true);
-            Debug.Log("RUN");
         }
     }
 

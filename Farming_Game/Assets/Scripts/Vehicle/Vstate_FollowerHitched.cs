@@ -18,9 +18,7 @@ public class Vstate_FollowerHitched : IState
         _vehicle.CarriedWeight += follower.GetWeight();
         float speedFactor = follower.GetWeight() / _vehicle.GetMaxWeight();
 
-        _movementController.SetSpeed(_vehicle.GetSpeed() * speedFactor);
-
-        Debug.Log("Follower hitched");
+        _movementController.SetSpeed(_vehicle.GetSpeed() * speedFactor);      
 
     }
     public void Enter()

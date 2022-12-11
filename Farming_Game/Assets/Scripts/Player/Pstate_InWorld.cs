@@ -15,7 +15,6 @@ public class Pstate_InWorld : IState
 
     public void Enter()
     {
-
         return;
     }
 
@@ -27,7 +26,6 @@ public class Pstate_InWorld : IState
     public void Update()
     {
         _movementController.MovementUpdate();
-
     }
 
     public void OnCollisionEnter(Collision coll)
