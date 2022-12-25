@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IMoveable
 
     [SerializeField] private Animator _playerAnimator;
 
+    [SerializeField] private GameObject _hand;
+
 
     private IState _currentState;
     public void ChangeState(IState newState)
@@ -99,6 +101,16 @@ public class Player : MonoBehaviour, IMoveable
         {
             _playerAnimator.SetBool("Running", true);
         }
+    }
+
+    public void EquipTool(GameObject tool)
+    {
+        tool.gameObject.transform.SetParent(_hand.transform);        
+    }
+
+    public void UnEquipTool(GameObject tool)
+    {
+        tool.gameObject.transform.SetParent(null, true);
     }
 
     /*

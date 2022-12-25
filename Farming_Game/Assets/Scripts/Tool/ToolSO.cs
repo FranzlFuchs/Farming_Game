@@ -6,4 +6,7 @@ using UnityEngine;
 public class ToolSO : ScriptableObject
 {
       public int strength;
+
+      public Vector3 PositionInHand;
+      public Vector3 EulerAnglesInHand;
 }

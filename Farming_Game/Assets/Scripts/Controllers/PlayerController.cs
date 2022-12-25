@@ -72,7 +72,6 @@ public class PlayerController
             else
             {
                 Movee.AnimateStanding();
-
             }
         }
 
