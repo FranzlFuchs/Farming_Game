@@ -23,8 +23,10 @@ public class PlayerController
     bool moving;
     bool movingBefore;
 
-    public PlayerController(IMoveable moveable)
+    public PlayerController(IMoveable moveable, Orientation prevOrientation)
     {
+        playerOrientation = prevOrientation;
+        lastPlayerOrientation = prevOrientation;
         this.Movee = moveable;
         this.MoveeGO = moveable.GetGameObject();
         MoveeRB = MoveeGO.GetComponent<Rigidbody>();
@@ -54,6 +56,7 @@ public class PlayerController
             }
         }
         movingBefore = moving;
+
         if (verticalInput == 0 && horizontalInput == 0)
         {
             moving = false;
@@ -81,6 +84,7 @@ public class PlayerController
         if (!inReverse)
         {
             playerOrientation = GetOrientation(horizontalInput, verticalInput);
+
             MoveeRB.velocity = new Vector3(horizontalInput * speed, MoveeRB.velocity.y, verticalInput * speed);
         }
 
@@ -94,7 +98,7 @@ public class PlayerController
         {
             lastPlayerOrientation = playerOrientation;
             rot = rotationManager.GetRotation(playerOrientation);
-            Movee.AnimateGoing();
+            //Movee.AnimateGoing();
         }
 
         MoveeGO.transform.eulerAngles = new Vector3(0, rot, 0);
@@ -150,7 +154,7 @@ public class PlayerController
 
         }
 
-        return Orientation.I;
+        return playerOrientation;
     }
 
 }

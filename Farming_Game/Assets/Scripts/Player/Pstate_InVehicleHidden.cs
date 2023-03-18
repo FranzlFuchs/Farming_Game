@@ -50,7 +50,10 @@ public class Pstate_InVehicleHidden : IState
 
     public void Update()
     {
-        //_player.transform.position = _vehicle.gameObject.transform.position;
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _player.ChangeState(new Pstate_InWorld(_player));
+        }
         return;
     }
 }

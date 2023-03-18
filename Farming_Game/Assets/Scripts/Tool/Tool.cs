@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using Interfaces;
 using UnityEngine;
 
@@ -80,5 +81,15 @@ public class Tool : MonoBehaviour, ITool
     public bool IsEquipped()
     {
         return _isEquipped;
+    }
+
+    public float GetDamage()
+    {
+        return ToolSO.damage;
+    }
+
+    public ToolType GetToolType()
+    {
+        return ToolSO.toolType;
     }
 }

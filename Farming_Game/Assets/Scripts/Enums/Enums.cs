@@ -6,6 +6,11 @@ namespace Enums
         hidden
     }
 
+    public enum ToolType
+    {
+        hacking
+    }
+
     public enum Orientation
     {
         N = 0,

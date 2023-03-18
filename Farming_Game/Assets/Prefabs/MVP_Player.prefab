@@ -642,6 +642,7 @@ Transform:
   - {fileID: 1322475542626514059}
   - {fileID: 5319667154997271080}
   - {fileID: 3392442539604533984}
+  - {fileID: 1293616978698023772}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -679,6 +680,8 @@ MonoBehaviour:
   _playerConfig: {fileID: 11400000, guid: 7ff81b9e70278774aa25b5377fd08d60, type: 2}
   _playerAnimator: {fileID: 0}
   _hand: {fileID: 0}
+  _toolRange: {fileID: 5582639373649310191}
+  orientation: 0
 --- !u!54 &3944115639233802453
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1088,6 +1091,63 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00032295287, y: 0.2741825, z: 0.00070793927}
     m_Extent: {x: 0.3505835, y: 0.25688142, z: 0.214763}
   m_DirtyAABB: 0
+--- !u!1 &5582639373649310191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1293616978698023772}
+  - component: {fileID: 2352808429788306568}
+  - component: {fileID: 6504309942286821762}
+  m_Layer: 0
+  m_Name: ToolDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1293616978698023772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582639373649310191}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3725453473310998244}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2352808429788306568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582639373649310191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9507824, y: 2.0726779, z: 1.548529}
+  m_Center: {x: 0.03656864, y: 1.0604879, z: 0.81060296}
+--- !u!114 &6504309942286821762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582639373649310191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4acbbd8629f8964c995e36adf6b366e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5770704472112742197
 GameObject:
   m_ObjectHideFlags: 0

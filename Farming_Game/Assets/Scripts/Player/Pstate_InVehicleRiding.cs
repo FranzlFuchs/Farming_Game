@@ -42,6 +42,11 @@ public class Pstate_InVehicleRiding : IState
         _player.transform.position = _vehicle.GetSaddlePointPosition();
         _player.transform.rotation = _vehicle.GetSaddlePointRotation();
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _player.ChangeState(new Pstate_InWorld(_player));
+        }
+
         return;
     }
 

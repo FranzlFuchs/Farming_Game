@@ -7,10 +7,12 @@ public class Player : MonoBehaviour, IMoveable
 {
 
     [SerializeField] private PlayerSO _playerConfig;
-
     [SerializeField] private Animator _playerAnimator;
-
     [SerializeField] private GameObject _hand;
+    [SerializeField] private GameObject _toolRange;
+    private ToolDetector _toolDetector;
+
+    public Orientation orientation;
 
 
     private IState _currentState;
@@ -26,14 +28,11 @@ public class Player : MonoBehaviour, IMoveable
         _playerAnimator = GetComponent<Animator>();
         _currentState = new Pstate_InWorld(this);
         _currentState.Enter();
+        _toolDetector = _toolRange.GetComponent<ToolDetector>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            ChangeState(new Pstate_InWorld(this));
-        }
         _currentState.Update();
     }
 
@@ -48,7 +47,6 @@ public class Player : MonoBehaviour, IMoveable
 
     void OnCollisionEnter(Collision coll)
     {
-
         if (coll.gameObject.CompareTag("Vehicle"))
         {
             Vehicle collVehicle = coll.gameObject.GetComponent<Vehicle>();
@@ -88,6 +86,22 @@ public class Player : MonoBehaviour, IMoveable
         return;
     }
 
+    public void AnimateHackingOn()
+    {
+        if (_playerAnimator != null)
+        {
+            _playerAnimator.SetBool("Hacking", true);
+        }
+    }
+
+    public void AnimateHackingOff()
+    {
+        if (_playerAnimator != null)
+        {
+            _playerAnimator.SetBool("Hacking", false);
+        }
+    }
+
     public void AnimateStanding()
     {
         if (_playerAnimator != null)
@@ -105,12 +119,20 @@ public class Player : MonoBehaviour, IMoveable
 
     public void EquipTool(GameObject tool)
     {
-        tool.gameObject.transform.SetParent(_hand.transform);        
+        tool.gameObject.transform.SetParent(_hand.transform);
+        ChangeState(new Pstate_HasTool(this, tool.GetComponent<ITool>()));
     }
 
     public void UnEquipTool(GameObject tool)
     {
         tool.gameObject.transform.SetParent(null, true);
+        ChangeState(new Pstate_InWorld(this));
+    }
+
+
+    public IHitable GetToolCollisionHitable()
+    {
+        return _toolDetector.GetCollidedHitableObject();
     }
 
     /*

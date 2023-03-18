@@ -1,14 +1,17 @@
-using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using Interfaces;
-using Enums;
-public class Pstate_InWorld : IState
-{
+using UnityEngine;
 
-    private Player _player;
+public class Pstate_HasTool : IState
+{
+      private Player _player;
+      private ITool _tool;
     private PlayerController _movementController;
-    public Pstate_InWorld(Player player)
+    public Pstate_HasTool(Player player, ITool tool)
     {
         this._player = player;
+        this._tool = tool;
         _movementController = new PlayerController(_player, _player.orientation);
         _movementController.SetSpeed(_player.GetSpeed());
     }
@@ -27,6 +30,11 @@ public class Pstate_InWorld : IState
     {
         _movementController.MovementUpdate();
         _player.orientation = _movementController.playerOrientation;
+
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            _player.ChangeState(new Pstate_UsingTool(_player, _tool));
+        }
     }
 
     public void OnCollisionEnter(Collision coll)
