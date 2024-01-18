@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "b224f31797d70bfa",
+        "id": "2606cb8015ddac08",
         "type": "tabs",
         "children": [
           {
-            "id": "3e7dfe506a8b5287",
+            "id": "076b07b4a43d7446",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {}
             }
           }
@@ -31,7 +31,7 @@
           {
             "id": "31e34c6ba7c4fa01",
             "type": "tabs",
-            "dimension": 52.358490566037744,
+            "dimension": 52.35849056603774,
             "children": [
               {
                 "id": "254b348c7d6f1eab",
@@ -61,7 +61,7 @@
           {
             "id": "7e20f8930e0a6025",
             "type": "tabs",
-            "dimension": 24.056603773584907,
+            "dimension": 24.056603773584904,
             "children": [
               {
                 "id": "24a25f04ec05af9c",
@@ -76,7 +76,7 @@
           {
             "id": "8e609f328c813ae5",
             "type": "tabs",
-            "dimension": 23.58490566037736,
+            "dimension": 23.584905660377352,
             "children": [
               {
                 "id": "d679bd15c6b4e4da",
@@ -159,7 +159,18 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "3e7dfe506a8b5287",
+  "left-ribbon": {
+    "hiddenItems": {
+      "obsidian-gallery:Gallery": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "076b07b4a43d7446",
   "lastOpenFiles": [
     "MoodBoard.md",
     "Random Thoughts.md",

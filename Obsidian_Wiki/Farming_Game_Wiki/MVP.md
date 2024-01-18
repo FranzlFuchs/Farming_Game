@@ -3,6 +3,6 @@
 2 Follower = Pflug / Wagerl
 1 Werzeug = Axt
 3 Ressourcen = Holz, Stein, Schrott
-1 Tier = Hund
+1 Tier = Hund / Katze
 1 Pflanze = Weizen
-1 Bonus = HOLLER
+1 Bonus = HOLLER 
