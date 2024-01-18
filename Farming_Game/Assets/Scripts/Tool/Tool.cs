@@ -7,13 +7,9 @@ using UnityEngine;
 public class Tool : MonoBehaviour, ITool
 {
     public ToolSO ToolSO;
-
     private bool _isEquipped;
-
     private IState _currentState;
-
     private float _activationCooldown;
-
 
     public void ChangeState(IState newState)
     {
@@ -36,7 +32,6 @@ public class Tool : MonoBehaviour, ITool
 
     public void PlaceInWorld()
     {
-        //gameObject.transform.eulerAngles.Set(0, 0, 90);
 
     }
 

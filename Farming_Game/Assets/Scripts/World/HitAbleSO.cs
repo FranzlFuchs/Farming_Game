@@ -4,8 +4,8 @@ using UnityEngine;
 using Enums;
 
 [CreateAssetMenu]
-public class HitAbleSO : ScriptableObject
+public class HitAbleSO : ScriptableDictionary<ToolType, float>
 {
    public float HitPoints;
-   public Dictionary<ToolType, float> HitTable = new Dictionary<ToolType, float>();
+   //public Dictionary<ToolType, float> HitTable = new Dictionary<ToolType, float>();
 }

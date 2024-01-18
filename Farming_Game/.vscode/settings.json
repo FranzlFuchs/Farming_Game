@@ -128,5 +128,6 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "DockerRun.DisableAutoGenerateConfig": true
 }
